@@ -32,69 +32,19 @@ function pfEstimada() {
     resultado.textContent = "PF Estimada = " + pf + " ( " + pf * custoPF + " )";
 
 }
-function pfDetalhada() {
-    // obtém os valores preenchidos pelo analista de pontos de função
-    var ALI = Number(document.getElementById("ALId").value);
-    var AIE = Number(document.getElementById("AIEd").value);
-    var EE  = Number(document.getElementById("EEd").value);
-    var SE  = Number(document.getElementById("SEd").value);
-    var CE  = Number(document.getElementById("CEd").value);
-    var pALI = Number(document.getElementById("cpxALI").value);
-    var pAIE = Number(document.getElementById("cpxAIE").value);
-    var pEE  = Number(document.getElementById("cpxEE").value);
-    var pSE  = Number(document.getElementById("cpxSE").value);
-    var pCE  = Number(document.getElementById("cpxCE").value);
-    // calcula a contagem detalhada
-    var resultado = document.getElementById("pfDetalhada");
-    // Busca os pesos de ALI, AIE, EE, SE e CE da dropdownlist
-    // e soma os produtos destes com as ALI, AIE, EE, SE e CE informados
-    var pf = ( ALI * pALI ) + ( AIE * pAIE ) + ( EE *  pEE ) + ( SE * pSE ) 
-           + ( CE * pCE );
-    resultado.textContent = "PF Detalhada = " + pf + " ( " + pf * custoPF + " )";
-    var rlALI = document.getElementById("rlALI").value;
-    var idALI = document.getElementById("idALI").value;
-    var cpxALI = document.getElementById("cpxALI");
-    cpxALI[peso_ALI_AIE(rlALI, idALI)].selected = true; 
-    
-    var rlAIE = document.getElementById("rlAIE").value;
-    var idAIE = document.getElementById("idAIE").value;
-    var cpxAIE = document.getElementById("cpxAIE");
-    cpxAIE[peso_ALI_AIE(rlAIE, idAIE)].selected = true; 
- 
-    var rlEE = document.getElementById("rlEE").value;
-    var idEE = document.getElementById("idEE").value;
-    var cpxEE = document.getElementById("cpxEE");
-    cpxEE[peso_EE(rlEE, idEE)].selected = true; 
-    
-    var rlSE = document.getElementById("rlSE").value;
-    var idSE = document.getElementById("idSE").value;
-    var cpxSE = document.getElementById("cpxSE");
-    cpxSE[peso_SE_CE(rlSE, idSE)].selected = true; 
- 
-    var rlCE = document.getElementById("rlCE").value;
-    var idCE = document.getElementById("idCE").value;
-    var cpxCE = document.getElementById("cpxCE");
-    cpxCE[peso_SE_CE(rlCE, idCE)].selected = true;
-}
 function Mudarestado(el) {
     if ( el == "secao1" ) {
-        aux1 = "secao2";
-        aux2 = "secao3";
+        aux = "secao2";
     } else 
     if ( el == "secao2" ) {
-        aux1 = "secao1";
-        aux2 = "secao3";
-    } else {
-        aux1 = "secao1";
-        aux2 = "secao2";
+        aux = "secao1";
     }
     var display = document.getElementById(el).style.display;
     if(display == "block")
         document.getElementById(el).style.display = 'none';
     else {
         document.getElementById(el).style.display = 'block';
-        document.getElementById(aux1).style.display = 'none';
-        document.getElementById(aux2).style.display = 'none';
+        document.getElementById(aux).style.display = 'none';
     }    
 }
 function abreviar() {

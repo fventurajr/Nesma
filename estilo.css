@@ -14,12 +14,6 @@ p {
     font-family: 'Courier New', Courier, monospace;
     font-size: large
 }
-#btnMaisALI, #btnMenosALI,
-#btnMaisAIE, #btnMenosAIE
- {
-    background: #aaaaaa;
-    font-size: 1.1em;
-}
 #custoPF {
     background:peachpuff;
     border:none;
@@ -47,12 +41,6 @@ input[type=text] {
     display:none;
     visibility: visible;
 }
-
-#secao3 {
-    display:none;
-    visibility: visible;
-}
-
 #proprietario {
     font-family: cursive;
     color:pink;
