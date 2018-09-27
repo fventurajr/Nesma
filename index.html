@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Métricas</title>
+</head>
+<body>
+    <form name="frmIndicativa" method="GET" action="grava_contagem.php">
+    <h1>Portal de Estudo de <span id="proprietario">Métrica</span></h1>
+    <p>
+        <span>sigla do sistema</span>
+        <input type="text" id="siglaSistema" name="siglaSistema" value="DS05">
+        <span>descritivo</span>
+        <input type="text" id="descSistema" name="descSistema" 
+        value="Sistema de Acompanhamento de Liceenciamento Ambiental">
+    </p>
+    <p>
+        <button type="button" onclick="Mudarestado('secao1')">Indicativa</button>
+        <button type="button" onclick="Mudarestado('secao2')">Estimada</button>
+        <button type="button" onclick="Mudarestado('secao3')">Detalhada</button>
+        <button type="button" onclick="abreviar()">Profissional</button>
+        <span>valor do ponto de Função</span><input id="custoPF" value="602" style="width:80px">
+    </p>
+  
+    <div id="secao1">
+    <h2>Contagem Indicativa</h2>
+    <p>   
+        <input type="submit" value="gravar">     
+        <span class="descALI" style="margin-right:64px">Arquivo Lógico Interno:</span>
+        <input type="text" id="ALI" value="0" name="txtALI">
+        <!--<input type="button" id="btnMaisALI" value="+"> 
+        <input type="button" id="btnMenosALI" value="-">-->
+        <br/><br/>
+        <span class="descAIE">Arquivo de Interface externa:</span>
+        <input type="text" id="AIE" name="txtAIE">
+        <!--<input type="button" id="btnMaisAIE" value="+">
+        <input type="button" id="btnMenosAIE" value="-">-->
+        <hr/>
+        <div id="pfIndicativa"></div>
+    </p>
+    <p>
+        <input type="button" id="btnIndicativa" value="Indicativa">
+    </p>
+    </div>
+
+    <div id="secao2">
+    <h2>Contagem Estimada</h2>
+    <p>
+        Assume-se ALI e AIE de baixa complexidade e EE, SE e CE de média complexidade.
+
+    </p>
+    <p>
+        <span class="descALI" style="margin-right:64px">Arquivo Lógico Interno:</span>
+        <input type="text" id="ALIe">
+        <br/><br/>
+        <span class="descAIE">Arquivo de Interface externa:</span>
+        <input type="text" id="AIEe">
+        <br/><br/>
+        <span class="descEE" style="margin-right:139px">Entrada Externa:</span>
+        <input type="text"   id="EE">
+        <br/><br/>
+        <span class="descSE" style="margin-right:159px">Saída Externa:</span>
+        <input type="text"   id="SE">
+        <br/><br/>
+        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
+        &nbsp;&nbsp;&nbsp;&nbsp;      
+        -->
+        <span class="descCE" style="margin-right:128px">Consulta Externa:</span>
+        <input type="text" id="CE">
+        <hr/>
+        <div id="pfEstimada"></div>        
+        <p>
+            <input type="button" id="btnEstimada" value="Estimada">
+        </p>
+    </p>
+    </div>
+	
+	<div id="secao3">
+	<h2>Contagem Detalhada</h2>
+	<p>
+        Aqui é necessário pesar as complexidades dos quesitos ALI, AIE, EE, SE e CE.
+
+    </p>
+	<p>
+ 		<br/>
+        <span class="descALI" style="margin-right:64px">Arquivo Lógico Interno:</span>
+        <input type="text" id="ALId">
+		&nbsp;&nbsp;
+		<select id="cpxALI">
+			<option value="7">baixa</option>
+			<option value="10">média</option>
+			<option value="15">alta</option>
+		</select>
+		<span class="RL">Registros Lógicos:</span>
+		<input type="text" id="rlALI">
+		<span class="ID">Itens de Dados:</span>
+		<input type="text" id="idALI">
+        <br/><br/>
+        <span class="descAIE">Arquivo de Interface externa:</span>
+        <input type="text" id="AIEd">
+		&nbsp;&nbsp;
+		<select id="cpxAIE">
+			<option value="5">baixa</option>
+			<option value="7">média</option>
+			<option value="10">alta</option>
+		</select>
+		<span class="RL">Registros Lógicos:</span>
+		<input type="text" id="rlAIE">
+		<span class="ID">Itens de Dados:</span>
+		<input type="text" id="idAIE">
+        <br/><br/>
+        <span class="descEE" style="margin-right:139px">Entrada Externa:</span>
+        <input type="text"   id="EEd">
+		&nbsp;&nbsp;
+		<select id="cpxEE">
+			<option value="3">baixa</option>
+			<option value="4">média</option>
+			<option value="6">alta</option>
+		</select>
+		<span class="RL">Registros Lógicos:</span>
+		<input type="text" id="rlEE">
+        <span class="ID">Itens de Dados:</span>
+		<input type="text" id="idEE">
+        <br/><br/>
+        <span class="descSE" style="margin-right:159px">Saída Externa:</span>
+        <input type="text"   id="SEd">
+		&nbsp;&nbsp;
+		<select id="cpxSE">
+			<option value="4">baixa</option>
+			<option value="5">média</option>
+			<option value="7">alta</option>
+		</select>
+		<span class="RL">Registros Lógicos:</span>
+		<input type="text" id="rlSE">
+		<span class="ID">Itens de Dados:</span>
+		<input type="text" id="idSE">
+        <br/><br/>
+        <span class="descCE" style="margin-right:128px">Consulta Externa:</span>
+        <input type="text" id="CEd">
+		&nbsp;&nbsp;
+		<select id="cpxCE">
+			<option value="3">baixa</option>
+			<option value="4">média</option>
+			<option value="6">alta</option>
+		</select>
+		<span class="RL">Registros Lógicos:</span>
+		<input type="text" id="rlCE">
+		<span class="ID">Itens de Dados:</span>
+		<input type="text" id="idCE">
+        <hr/>
+        <div id="pfDetalhada"></div>        
+        <p>
+            <input type="button" id="btnDetalhada" value="Detalhada">
+        </p>
+    </p>
+</form>
+	</div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
